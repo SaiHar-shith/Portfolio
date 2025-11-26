@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'; // Import hooks
 import { io } from "socket.io-client"; // Import Socket
-import profileImg from '../assets/profile.jpg'; 
+import profileImg from '../assets/Profile.jpg'; 
 
 const Sidebar = () => {
   const [activeUsers, setActiveUsers] = useState(1);
