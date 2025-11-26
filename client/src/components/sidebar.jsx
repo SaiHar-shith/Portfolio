@@ -7,7 +7,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     // Connect to Backend
-    const socket = io("http://localhost:5000");
+    const socket = io("https://portfolio-jzb1.onrender.com");
 
     // Listen for count updates
     socket.on("userCount", (count) => {
