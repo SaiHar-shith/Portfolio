@@ -42,23 +42,23 @@ io.on('connection', (socket) => {
 });
 // -----------------------
 
-// 1. New Transporter Config (Port 465 + Secure)
+// 1. Switch to Port 465 (Secure SSL)
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
-  secure: true, // Use SSL
+  secure: true, // MUST be true for port 465
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
   }
 });
 
-// 2. Add this Verifier Block (Logs connection status on startup)
+// 2. Add this Verifier (Logs connection status immediately on startup)
 transporter.verify((error, success) => {
   if (error) {
-    console.log("❌ Email Service Error:", error);
+    console.log("❌ CONNECTION FAILED:", error);
   } else {
-    console.log("✅ Email Service is Ready to send messages!");
+    console.log("✅ SERVER READY: Connected to Gmail successfully!");
   }
 });
 
