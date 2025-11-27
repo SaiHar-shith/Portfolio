@@ -16,7 +16,7 @@ const ContactForm = () => {
     setStatus('');
 
     try {
-      await axios.post('https://portfolio-jzb1.onrender.com', formData);
+      await axios.post('https://portfolio-jzb1.onrender.com/contact', formData);
       setStatus('SUCCESS');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
