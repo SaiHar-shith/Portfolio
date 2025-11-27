@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; // Added useState for mobile menu
-import profileImg from '../assets/profile.jpg'; 
+import profileImg from '../../src/assets/Profile.jpg'; 
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
