@@ -47,8 +47,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "resend",
-    pass: process.env.RESEND_API_KEY
+    user: "saiharshithkatanguri@gmail.com",
+    pass: process.env.EMAIL_USER
   },
 });
 
