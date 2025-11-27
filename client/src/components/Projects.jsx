@@ -36,18 +36,16 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-gray-50/50">
       
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-serif font-bold text-gray-900">Selected Work</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">Selected Work</h2>
         <p className="text-gray-500 mt-2">Scroll to shuffle the deck.</p>
       </div>
 
-      {/* Container for the stack - Centered & Narrower */}
-      <div className="w-full max-w-md mx-auto pb-32 relative">
+      <div className="w-full max-w-md mx-auto pb-32 relative px-4">
         
         {projects.map((proj, index) => {
           
-          // Calculate Stacking Offset
-          // Each card sticks 40px lower than the previous one
-          const topOffset = 120 + (index * 40); 
+          // Responsive Top Offset: Less gap on mobile
+          const topOffset = 100 + (index * 30); 
 
           return (
             <div 
@@ -55,13 +53,12 @@ const Projects = () => {
               className="sticky transition-transform duration-500 ease-out"
               style={{ top: `${topOffset}px` }} 
             >
-              {/* Vertical Card Shape */}
-              <div className="relative overflow-hidden rounded-[2rem] bg-white border border-gray-200 shadow-2xl flex flex-col h-[500px] transform hover:-translate-y-4 transition-all duration-300">
+              {/* Card Height: Auto on Mobile, Fixed 500px on Desktop */}
+              <div className="relative overflow-hidden rounded-[2rem] bg-white border border-gray-200 shadow-xl flex flex-col min-h-[400px] md:h-[500px] transform hover:-translate-y-4 transition-all duration-300">
                 
-                {/* Top Half: Visual / Color */}
-                <div className={`${proj.color} h-[45%] p-6 text-white flex flex-col justify-between relative overflow-hidden`}>
+                {/* Top Half */}
+                <div className={`${proj.color} h-40 md:h-[45%] p-6 text-white flex flex-col justify-between relative overflow-hidden shrink-0`}>
                   
-                  {/* Decorative big number */}
                   <div className="absolute -right-4 -bottom-8 text-9xl font-serif font-bold opacity-20 rotate-12">
                     {index + 1}
                   </div>
@@ -73,15 +70,15 @@ const Projects = () => {
                     <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                   </div>
                   
-                  <h3 className="text-3xl font-serif font-bold leading-none z-10 mt-auto">
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold leading-none z-10 mt-auto">
                     {proj.title}
                   </h3>
                 </div>
 
-                {/* Bottom Half: Content */}
-                <div className="h-[55%] p-8 flex flex-col bg-white">
+                {/* Bottom Half */}
+                <div className="flex-1 p-6 md:p-8 flex flex-col bg-white">
                   <div className="flex-1">
-                    <p className="text-gray-600 text-lg leading-relaxed font-sans">
+                    <p className="text-gray-600 text-base md:text-lg leading-relaxed font-sans">
                       {proj.desc}
                     </p>
                   </div>
