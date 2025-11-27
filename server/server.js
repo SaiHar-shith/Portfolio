@@ -43,7 +43,9 @@ io.on('connection', (socket) => {
 // -----------------------
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: "smtp.gmail.com", // Explicit host
+  port: 587,              // Standard port for cloud apps
+  secure: false,          // False for 587, True for 465
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
