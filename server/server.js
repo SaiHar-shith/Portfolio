@@ -43,13 +43,22 @@ io.on('connection', (socket) => {
 // -----------------------
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.resend.com",
-  port: 587,
-  secure: false,
+  host: "smtp.gmail.com",  // <--- FIXED: Must be Gmail, not Resend
+  port: 465,               // <--- SSL Port
+  secure: true,            // <--- Must be true for 465
   auth: {
-    user: "saiharshithkatanguri@gmail.com",
-    pass: process.env.EMAIL_USER
-  },
+    user: process.env.EMAIL_USER, // Your email
+    pass: process.env.EMAIL_PASS  // <--- FIXED: Use the PASS variable, not USER
+  }
+});
+
+// Verify connection immediately
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ CONNECTION FAILED:", error);
+  } else {
+    console.log("✅ SERVER READY: Connected to Gmail successfully!");
+  }
 });
 
 app.post('/contact', async (req, res) => {
