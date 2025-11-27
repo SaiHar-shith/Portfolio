@@ -42,13 +42,23 @@ io.on('connection', (socket) => {
 });
 // -----------------------
 
+// 1. New Transporter Config (Port 465 + Secure)
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com", // Explicit host
-  port: 587,              // Standard port for cloud apps
-  secure: false,          // False for 587, True for 465
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // Use SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
+  }
+});
+
+// 2. Add this Verifier Block (Logs connection status on startup)
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ Email Service Error:", error);
+  } else {
+    console.log("✅ Email Service is Ready to send messages!");
   }
 });
 
