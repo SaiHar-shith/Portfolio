@@ -42,24 +42,14 @@ io.on('connection', (socket) => {
 });
 // -----------------------
 
-// 1. Switch to Port 465 (Secure SSL)
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // MUST be true for port 465
+  host: "smtp.resend.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-// 2. Add this Verifier (Logs connection status immediately on startup)
-transporter.verify((error, success) => {
-  if (error) {
-    console.log("❌ CONNECTION FAILED:", error);
-  } else {
-    console.log("✅ SERVER READY: Connected to Gmail successfully!");
-  }
+    user: "resend",
+    pass: process.env.RESEND_API_KEY
+  },
 });
 
 app.post('/contact', async (req, res) => {
