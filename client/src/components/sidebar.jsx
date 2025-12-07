@@ -76,7 +76,7 @@ const Sidebar = () => {
         </nav>
 
         <div>
-          <a href="/Resume_Harshith.pdf" download="Resume_Sai_Harshith.pdf" className="block w-full text-center py-3 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-semibold transition cursor-pointer">
+          <a href="/SaiHarshith_Resume.pdf" download="Resume_Sai_Harshith.pdf" className="block w-full text-center py-3 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-semibold transition cursor-pointer">
             Download Resume
           </a>
         </div>
